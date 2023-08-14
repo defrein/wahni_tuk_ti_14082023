@@ -1,0 +1,90 @@
+.background-wrapper {
+    background: #f6f6f6;
+    /* background: -webkit-linear-gradient(to right, #004e92, #000428);
+    background: linear-gradient(to right, #004e92, #000428); */
+    height: 100%;
+}
+
+.banner {
+    position: fixed !important;
+    z-index: 1 !important;
+    top: 0;
+    /* bottom: 0; */
+    left: 0;
+    right: 0;
+    background-color: #4b79a1;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-around !important;
+    padding: 60px !important;
+}
+
+.banner h3,
+.banner p {
+    color: #fff;
+}
+
+.banner .contact {
+    margin-bottom: 0;
+}
+
+.content-below-banner {
+    margin-top: 300px !important;
+    position: relative !important;
+    z-index: 99 !important;
+}
+
+.navbar {
+    /* background: #406788 !important; */
+    z-index: 2 !important;
+}
+
+.brand-image {
+    height: 30px;
+    margin-right: 10px;
+}
+
+.brand-text {
+    font-weight: 700;
+    font-size: 20px
+}
+
+.card-header {
+    display: none !important;
+}
+
+.btn-whatsapp {
+    background-color: #25D366;
+    border: none;
+    margin-bottom: 20px;
+    display: none;
+}
+
+.btn-whatsapp:hover {
+    background-color: #1b8634;
+}
+
+
+/*  responsive */
+
+@media only screen and (max-width: 768px) {
+    /* For mobile phones: */
+    .card-header {
+        display: block !important;
+    }
+    .card-header h3 {
+        text-align: center;
+    }
+    .banner h3 {
+        display: none;
+    }
+    .show-desktop {
+        display: none !important;
+    }
+    .text-banner {
+        display: none;
+    }
+    .btn-whatsapp {
+        display: block;
+    }
+}
