@@ -48,15 +48,18 @@
                                         <td>
                                             <a href="" class="btn btn-default btn-sm d-inline-block"><i
                                                     class="fas fa-list"></i></a>
-                                            <button onclick="" class="btn btn-sm btn-primary">
+                                            <button
+                                                onclick="editSuratMasuk('{{ route('surat-masuk.update', $item->id_surat_masuk) }}')"
+                                                class="btn btn-sm btn-primary">
                                                 <i class="fas fa-pen"></i>
                                             </button>
-                                            <form id="hapus-barang{{ $item->id_barang }}" action="" method="post"
-                                                class="d-inline">
+                                            <form id="hapus-surat-masuk{{ $item->id_surat_masuk }}"
+                                                action="{{ route('surat-masuk.destroy', $item->id_surat_masuk) }}"
+                                                method="post" class="d-inline">
                                                 @csrf
                                                 @method('delete')
                                                 <button type="submit" class="btn btn-sm btn-danger border-0 delete-btn"
-                                                    onclick="">
+                                                    onclick="deleteSuratMasuk({{ $item->id_surat_masuk }})">
                                                     <i class="fa fa-trash"></i>
                                                 </button>
                                             </form>
@@ -85,46 +88,52 @@
             $('#modal-surat-masuk [name=_method]').val('post');
         }
 
-        // function editBarang(url) {
-        //     $('#modal-barang').modal('show');
-        //     $('#modal-barang .modal-title').text('Edit barang');
+        function editSuratMasuk(url) {
+            $('#modal-surat-masuk').modal('show');
+            $('#modal-surat-masuk .modal-title').text('Edit Surat Masuk');
 
-        //     $('#modal-barang form')[0].reset();
-        //     $('#modal-barang form').attr('action', url);
-        //     $('#modal-barang [name=_method]').val('put');
+            $('#modal-surat-masuk form')[0].reset();
+            $('#modal-surat-masuk form').attr('action', url);
+            $('#modal-surat-masuk [name=_method]').val('put');
 
-        //     $.get(url)
-        //         .done((response) => {
-        //             $('#modal-barang [name=nama_barang]').val(response.nama_barang);
-        //             $('#modal-barang [name=id_bahan]').val(response.id_bahan);
-        //             $('#modal-barang [name=id_mesin]').val(response.id_mesin);
-        //             $('#modal-barang [name=satuan]').val(response.satuan);
-        //             $('#modal-barang [name=harga]').val(response.harga);
-        //         })
-        // }
+            $.get(url)
+                .done((response) => {
+                    $('#modal-surat-masuk [name=no_surat]').val(response.no_surat);
+                    $('#modal-surat-masuk [name=nama_pengirim]').val(response.nama_pengirim);
+                    $('#modal-surat-masuk [name=waktu]').val(response.waktu);
+                    $('#modal-surat-masuk [name=lampiran]').val(response.lampiran);
+                    $('#modal-surat-masuk [name=perihal]').val(response.perihal);
+                    $('#modal-surat-masuk [name=nama_penerima]').val(response.nama_penerima);
+                    $('#modal-surat-masuk [name=isi_surat]').val(response.isi_surat);
+                    $('#modal-surat-masuk [name=id_penerbit]').val(response.id_penerbit);
+                    $('#modal-surat-masuk [name=tempat]').val(response.tempat);
+                    $('#modal-surat-masuk [name=id_pengesah]').val(response.id_pengesah);
+                    $('#modal-surat-masuk [name=tembusan]').val(response.tembusan);
+                })
+        }
 
-        // function deleteBarang(id) {
-        //     event.preventDefault();
-        //     Swal.fire({
-        //         title: 'Yakin?',
-        //         text: "Hapus data ini",
-        //         icon: 'warning',
-        //         showCancelButton: true,
-        //         showConfirmButton: true,
-        //         confirmButtonColor: '#3085d6',
-        //         cancelButtonColor: '#d33',
-        //         confirmButtonText: 'Ya, hapus!'
-        //     }).then((result) => {
-        //         if (result.isConfirmed) {
-        //             document.getElementById('hapus-barang' + id).submit();
-        //             Swal.fire(
-        //                 'Terhapus!',
-        //                 'Data berhasil terhapus',
-        //                 'success'
-        //             )
-        //         }
-        //     })
-        // }
+        function deleteSuratMasuk(id) {
+            event.preventDefault();
+            Swal.fire({
+                title: 'Yakin?',
+                text: "Hapus data ini",
+                icon: 'warning',
+                showCancelButton: true,
+                showConfirmButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Ya, hapus!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    document.getElementById('hapus-surat-masuk' + id).submit();
+                    Swal.fire(
+                        'Terhapus!',
+                        'Data berhasil terhapus',
+                        'success'
+                    )
+                }
+            })
+        }
 
         $(function() {
             var Toast = Swal.mixin({
@@ -133,16 +142,16 @@
                 showConfirmButton: false,
                 timer: 3000
             });
-            @if (Session::has('sukses-tambah-barang'))
+            @if (Session::has('sukses-tambah'))
                 Toast.fire({
                     icon: 'success',
-                    title: '{{ Session::get('sukses-tambah-barang') }}'
+                    title: '{{ Session::get('sukses-tambah') }}'
                 })
             @endif
-            @if (Session::has('sukses-ubah-barang'))
+            @if (Session::has('sukses-ubah'))
                 Toast.fire({
                     icon: 'success',
-                    title: '{{ Session::get('sukses-ubah-barang') }}'
+                    title: '{{ Session::get('sukses-ubah') }}'
                 })
             @endif
         });

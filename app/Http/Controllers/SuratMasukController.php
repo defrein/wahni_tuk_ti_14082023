@@ -42,7 +42,22 @@ class SuratMasukController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        SuratMasuk::create([
+            'no_surat' => $request->no_surat,
+            'nama_pengirim' => $request->nama_pengirim,
+            'waktu' => $request->waktu,
+            'lampiran' => $request->lampiran,
+            'perihal' => $request->perihal,
+            'nama_penerima' => $request->nama_penerima,
+            'isi_surat' => $request->isi_surat,
+            'id_penerbit' => $request->id_penerbit,
+            'tempat' => $request->tempat,
+            'id_pengesah' => $request->id_pengesah,
+            'tembusan' => $request->tembusan,
+
+        ]);
+
+        return redirect('/surat-masuk')->with('sukses-tambah', 'Data Berhasil Ditambahkan');
     }
 
     /**
@@ -53,7 +68,9 @@ class SuratMasukController extends Controller
      */
     public function show($id)
     {
-        //
+        $surat_masuk = SuratMasuk::find($id);
+
+        return response()->json($surat_masuk);
     }
 
     /**
@@ -64,7 +81,6 @@ class SuratMasukController extends Controller
      */
     public function edit($id)
     {
-        //
     }
 
     /**
@@ -76,7 +92,21 @@ class SuratMasukController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        SuratMasuk::find($id)->update([
+            'no_surat' => $request->no_surat,
+            'nama_pengirim' => $request->nama_pengirim,
+            'waktu' => $request->waktu,
+            'lampiran' => $request->lampiran,
+            'perihal' => $request->perihal,
+            'nama_penerima' => $request->nama_penerima,
+            'isi_surat' => $request->isi_surat,
+            'id_penerbit' => $request->id_penerbit,
+            'tempat' => $request->tempat,
+            'id_pengesah' => $request->id_pengesah,
+            'tembusan' => $request->tembusan,
+        ]);
+
+        return redirect('/surat-masuk')->with('sukses-ubah', 'Data Berhasil Diubah');
     }
 
     /**
@@ -87,6 +117,8 @@ class SuratMasukController extends Controller
      */
     public function destroy($id)
     {
-        //
+        SuratMasuk::find($id)->delete();
+
+        return back();
     }
 }

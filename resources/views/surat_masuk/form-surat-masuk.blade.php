@@ -22,16 +22,17 @@
                             <input type="text" class="form-control" name="nama_pengirim" id="nama_pengirim"
                                 placeholder="Masukkan Nama Pengirim" required>
                         </div>
-                        <div class="form-group">
-                            <label for="lampiran">Nama Pengirim</label>
-                            <input type="text" class="form-control" name="lampiran" id="lampiran"
-                                placeholder="Masukkan Lampiran" required>
-                        </div>
+
                         {{-- WAKTU --}}
                         <div class="form-group">
                             <label for="waktu">Waktu</label>
                             <input type="date" class="form-control" name="waktu" id="waktu"
-                                placeholder="Pilih Tanggal">
+                                placeholder="Pilih Tanggal" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="lampiran">Lampiran</label>
+                            <input type="text" class="form-control" name="lampiran" id="lampiran"
+                                placeholder="Masukkan Lampiran" required>
                         </div>
                         <div class="form-group">
                             <label for="perihal">Perihal</label>
