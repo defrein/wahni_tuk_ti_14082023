@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Penerbit;
+use App\Models\Pengesah;
+use App\Models\SuratKeluar;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controller;
 
 class SuratKeluarController extends Controller
 {
@@ -13,6 +17,11 @@ class SuratKeluarController extends Controller
      */
     public function index()
     {
+        return view('surat_keluar.index', [
+            'surat_keluar' => SuratKeluar::orderBy('created_at', 'desc')->get(),
+            'pengesah' => Pengesah::all()->pluck('nama_pengesah', 'id_pengesah'),
+            'penerbit' => Penerbit::all()->pluck('nama_penerbit', 'id_penerbit'),
+        ]);
     }
 
     /**
@@ -33,7 +42,22 @@ class SuratKeluarController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        SuratKeluar::create([
+            'no_surat' => $request->no_surat,
+            'nama_pengirim' => $request->nama_pengirim,
+            'waktu' => $request->waktu,
+            'lampiran' => $request->lampiran,
+            'perihal' => $request->perihal,
+            'nama_penerima' => $request->nama_penerima,
+            'isi_surat' => $request->isi_surat,
+            'id_penerbit' => $request->id_penerbit,
+            'tempat' => $request->tempat,
+            'id_pengesah' => $request->id_pengesah,
+            'tembusan' => $request->tembusan,
+
+        ]);
+
+        return redirect('/surat-keluar')->with('sukses-tambah', 'Data Berhasil Ditambahkan');
     }
 
     /**
@@ -44,7 +68,9 @@ class SuratKeluarController extends Controller
      */
     public function show($id)
     {
-        //
+        $surat_keluar = SuratKeluar::find($id);
+
+        return response()->json($surat_keluar);
     }
 
     /**
@@ -67,7 +93,21 @@ class SuratKeluarController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        SuratKeluar::find($id)->update([
+            'no_surat' => $request->no_surat,
+            'nama_pengirim' => $request->nama_pengirim,
+            'waktu' => $request->waktu,
+            'lampiran' => $request->lampiran,
+            'perihal' => $request->perihal,
+            'nama_penerima' => $request->nama_penerima,
+            'isi_surat' => $request->isi_surat,
+            'id_penerbit' => $request->id_penerbit,
+            'tempat' => $request->tempat,
+            'id_pengesah' => $request->id_pengesah,
+            'tembusan' => $request->tembusan,
+        ]);
+
+        return redirect('/surat-keluar')->with('sukses-ubah', 'Data Berhasil Diubah');
     }
 
     /**
@@ -78,6 +118,8 @@ class SuratKeluarController extends Controller
      */
     public function destroy($id)
     {
-        //
+        SuratKeluar::find($id)->delete();
+
+        return back();
     }
 }

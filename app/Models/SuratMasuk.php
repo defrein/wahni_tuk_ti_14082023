@@ -15,10 +15,10 @@ class SuratMasuk extends Model
 
     public function penerbit()
     {
-        return $this->hasMany(Penerbit::class, 'id_penerbit');
+        return $this->belongsTo(Penerbit::class, 'id_penerbit');
     }
     public function pengesah()
     {
-        return $this->hasMany(SuratKeluar::class, 'id_pengesah');
+        return $this->belongsTo(SuratKeluar::class, 'id_pengesah');
     }
 }

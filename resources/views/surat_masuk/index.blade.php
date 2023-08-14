@@ -46,8 +46,8 @@
                                         <td>{{ $item->lampiran }}</td>
                                         <td>{{ $item->perihal }}</td>
                                         <td>
-                                            <a href="" class="btn btn-default btn-sm d-inline-block"><i
-                                                    class="fas fa-list"></i></a>
+                                            {{-- <a href="" class="btn btn-default btn-sm d-inline-block"><i
+                                                    class="fas fa-list"></i></a> --}}
                                             <button
                                                 onclick="editSuratMasuk('{{ route('surat-masuk.update', $item->id_surat_masuk) }}')"
                                                 class="btn btn-sm btn-primary">

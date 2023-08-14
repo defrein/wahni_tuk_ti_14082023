@@ -50,5 +50,9 @@ Route::group(['middleware' => 'auth'], function () {
         return view('dashboard.index');
     });
 
+    // Route::resource('/surat-masuk/{id}', [SuratMasukController::class, 'detail']);
     Route::resource('/surat-masuk', SuratMasukController::class);
+
+    // Route::resource('/surat-keluar/{id}', [SuratKeluarController::class, 'detail']);
+    Route::resource('/surat-keluar', SuratKeluarController::class);
 });

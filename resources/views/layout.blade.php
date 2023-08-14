@@ -182,20 +182,35 @@
     {{-- Data Table --}}
     <script>
         $(function() {
-            var tableIds = ['#table2', '#table2_pemasukan', '#table2_pengeluaran', '#table2_pekerjaan'
+            // var tableIds = ['#table2', '#table2_pemasukan', '#table2_pengeluaran', '#table2_pekerjaan'
 
-            ];
-            $(tableIds.join(', ')).each(function() {
-                $(this).DataTable({
-                    "paging": true,
-                    "lengthChange": false,
-                    "searching": true,
-                    "ordering": true,
-                    "info": true,
-                    "autoWidth": false,
-                    "responsive": true,
-                });
-            });
+            // ];
+            // $(tableIds.join(', ')).each(function() {
+            //     $(this).DataTable({
+            //         "paging": true,
+            //         "lengthChange": false,
+            //         "searching": true,
+            //         "ordering": true,
+            //         "info": true,
+            //         "autoWidth": false,
+            //         "responsive": true,
+            //         "buttons": ["copy", "excel", "pdf", "print"],
+            //     }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+
+
+            // });
+            $("#table2").DataTable({
+                "paging": true,
+                "lengthChange": true,
+                "searching": true,
+                "ordering": true,
+                "info": true,
+                "autoWidth": false,
+                "responsive": true,
+                "dom": 'Blfrtip',
+                // "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+                "buttons": ["copy", "excel", "pdf", "print"]
+            }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
         });
     </script>
 

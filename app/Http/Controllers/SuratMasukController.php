@@ -7,6 +7,7 @@ use App\Models\Pengesah;
 use App\Models\SuratMasuk;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\DB;
 
 class SuratMasukController extends Controller
 {
@@ -81,6 +82,25 @@ class SuratMasukController extends Controller
      */
     public function edit($id)
     {
+    }
+    public function detail($id)
+    {
+        // return view('surat_masuk.detail', [
+        //     'surat_masuk' => SuratMasuk::orderBy('created_at', 'desc')->get(),
+        //     'pengesah' => Pengesah::all()->pluck('nama_pengesah', 'id_pengesah'),
+        //     'penerbit' => Penerbit::all()->pluck('nama_penerbit', 'id_penerbit'),
+        // ]);
+
+        // $detail = DB::table('surat_masuk_wahni')
+        //     ->join('penerbit', 'surat_masuk_wahni.id_penerbit', '=', 'penerbit.id_penerbit')
+        //     ->join('pengesah', 'surat_masuk_wahni.id_pengesah', '=', 'pengesah.id_pengesah')
+        //     ->where('id_surat_masuk', $id)
+        //     ->get();
+
+
+        // return view('surat_masuk.detail', $detail);
+
+        // dd($detail);
     }
 
     /**

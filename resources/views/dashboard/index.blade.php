@@ -22,7 +22,7 @@
 
 
 
-        <div class="row">
+        {{-- <div class="row">
             <div class="col-lg-3 col-6">
                 <div class="small-box bg-gradient-danger">
                     <div class="inner">
@@ -47,6 +47,6 @@
                     <a href="/surat-keluar" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
             </div>
-        </div>
+        </div> --}}
     </div>
 @endsection

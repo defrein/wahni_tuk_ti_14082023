@@ -15,10 +15,10 @@ class Penerbit extends Model
 
     public function suratMasuk()
     {
-        return $this->belongsTo(SuratMasuk::class, 'id_surat_masuk');
+        return $this->hasMany(SuratMasuk::class, 'id_surat_masuk');
     }
     public function suratKeluar()
     {
-        return $this->belongsTo(SuratKeluar::class, 'id_surat_keluar');
+        return $this->hasMany(SuratKeluar::class, 'id_surat_keluar');
     }
 }
