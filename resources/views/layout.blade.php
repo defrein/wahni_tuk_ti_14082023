@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>AAL Printing |</title>
+    <title>LSP | Wahni Adnani</title>
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet"
@@ -63,7 +63,6 @@
                             </p>
                         </li>
                         <li class="user-footer">
-                            <a href="/profile" class="btn btn-default btn-flat">Profile</a>
                             <a href="/logout" class="btn btn-default btn-flat float-right">Logout</a>
                         </li>
                     </ul>
@@ -76,7 +75,7 @@
             <a href="/" class="brand-link bg-light">
                 <img src="{{ asset('assets/dist/img/logo.png') }}" alt="AdminLTE Logo" class="brand-image"
                     style="opacity: .8">
-                <span class="brand-text font-weight-light">AAL Printing</span>
+                <span class="brand-text font-weight-light">LSP</span>
             </a>
 
             <!-- Sidebar -->
@@ -86,180 +85,40 @@
                         data-accordion="false">
                         <li class="nav-header">DASHBOARD</li>
                         <li class="nav-item">
-                            <a href="/dashboard" class="nav-link {{ Request::is('dashboard*') ? 'active' : '' }}">
+                            <a href="/dashboard" class="nav-link">
                                 <i class="nav-icon fas fa-tachometer-alt"></i>
                                 <p>
                                     Dashboard
                                 </p>
                             </a>
                         </li>
-                        @if ($nama_level == 'Administrator' || $nama_level == 'Desainer' || $nama_level == 'Kasir')
-                            <li class="nav-header">TRANSAKSI</li>
-                        @endif
-                        @if ($nama_level == 'Administrator' || $nama_level == 'Desainer' || $nama_level == 'Kasir' || $nama_level == 'Operator')
-                            <li class="nav-item">
-                                <a href="/pesanan" class="nav-link {{ Request::is('pesanan*') ? 'active' : '' }}">
-                                    <i class="nav-icon fas fa-file-invoice"></i>
-                                    <p>
-                                        Pesanan
-                                    </p>
-                                </a>
-                            </li>
-                        @endif
-                        @if ($nama_level == 'Administrator' || $nama_level == 'Kasir')
-                            <li class="nav-item">
-                                <a href="/pembayaran"
-                                    class="nav-link {{ Request::is('pembayaran*') ? 'active' : '' }}">
-                                    <i class="nav-icon fas fa-money-bill-wave"></i>
-                                    <p>
-                                        Pembayaran
-                                    </p>
-                                </a>
-                            </li>
-                        @endif
-                        @if (
-                            $nama_level == 'Administrator' ||
-                                $nama_level == 'Kasir' ||
-                                $nama_level == 'Desainer' ||
-                                $nama_level == 'Operator' ||
-                                $nama_level == 'Manajer')
-                            <li class="nav-header">PEKERJAAN</li>
-                            <li class="nav-item {{ Request::is('pekerjaan*') ? 'menu-open' : '' }}">
-                                <a href="#" class="nav-link">
-                                    <i class="nav-icon fas fa-business-time"></i>
-                                    <p>
-                                        Progres Pesanan
-                                        <i class="right fas fa-angle-left"></i>
-                                    </p>
-                                </a>
-                                <ul class="nav nav-treeview">
-                                    <li class="nav-item">
-                                        <a href="/pekerjaan"
-                                            class="nav-link {{ Request::is('pekerjaan') ? 'active' : '' }}">
-                                            <i class="far fa-circle nav-icon"></i>
-                                            <p>Semua</p>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="/pekerjaan/belum-ada-desain"
-                                            class="nav-link {{ Request::is('pekerjaan/belum-ada-desain') ? 'active' : '' }}"">
-                                            <i class="far fa-circle nav-icon"></i>
-                                            <p>Belum Ada Desain</p>
-                                        </a>
-                                    </li>
+                        <li class="nav-header">Surat</li>
+                        <li class="nav-item">
+                            <a href="/surat-masuk" class="nav-link">
+                                <i class="nav-icon fas fa-file-invoice"></i>
+                                <p>
+                                    Surat Masuk
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/surat-keluar" class="nav-link ">
+                                <i class="nav-icon fas fa-money-bill-wave"></i>
+                                <p>
+                                    Surat Keluar
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-header">USER</li>
 
-                                    <li class="nav-item">
-                                        <a href="/pekerjaan/sudah-ada-desain"
-                                            class="nav-link {{ Request::is('pekerjaan/sudah-ada-desain') ? 'active' : '' }}">
-                                            <i class="far fa-circle nav-icon"></i>
-                                            <p>Sudah Ada Desain</p>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="/pekerjaan/dikerjakan"
-                                            class="nav-link {{ Request::is('pekerjaan/dikerjakan') ? 'active' : '' }}">
-                                            <i class="far fa-circle nav-icon"></i>
-                                            <p>Dikerjakan</p>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="/pekerjaan/selesai"
-                                            class="nav-link {{ Request::is('pekerjaan/selesai') ? 'active' : '' }}">
-                                            <i class="far fa-circle nav-icon"></i>
-                                            <p>Selesai</p>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="/pekerjaan/sudah-diambil"
-                                            class="nav-link {{ Request::is('pekerjaan/sudah-diambil') ? 'active' : '' }}">
-                                            <i class="far fa-circle nav-icon"></i>
-                                            <p>Sudah Diambil</p>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-                        @endif
-                        @if ($nama_level == 'Administrator' || $nama_level == 'Kasir')
-                            <li class="nav-item">
-                                <a href="/pengeluaran"
-                                    class="nav-link {{ Request::is('pengeluaran*') ? 'active' : '' }}">
-                                    <i class="nav-icon fas fa-file-export"></i>
-                                    <p>
-                                        Pengeluaran
-                                    </p>
-                                </a>
-                            </li>
-                        @endif
-                        @if ($nama_level == 'Administrator' || $nama_level == 'Manajer' || $nama_level == 'Kasir')
-                            <li class="nav-header">REPORT</li>
-                            <li class="nav-item">
-                                <a href="/laporan" class="nav-link {{ Request::is('laporan*') ? 'active' : '' }}">
-                                    <i class="nav-icon fas fa-file"></i>
-                                    <p>
-                                        Laporan
-                                    </p>
-                                </a>
-                            </li>
-                        @endif
-                        @if ($nama_level == 'Administrator' || $nama_level == 'Kasir' || $nama_level == 'Desainer' || $nama_level == 'Operator')
-                            <li class="nav-header">MASTER</li>
-                            <li
-                                class="nav-item {{ Request::is('mesin*') || Request::is('bahan*') || Request::is('barang*') || Request::is('karyawan*') ? 'menu-open' : '' }}">
-                                <a href="#" class="nav-link  ">
-                                    <i class="nav-icon fas fa-tachometer-alt"></i>
-                                    <p>
-                                        Data Master
-                                        <i class="right fas fa-angle-left"></i>
-                                    </p>
-                                </a>
-                                <ul class="nav nav-treeview">
-                                    <li class="nav-item">
-                                        <a href="/mesin"
-                                            class="nav-link {{ Request::is('mesin*') ? 'active' : '' }}">
-                                            <i class="far fa-circle nav-icon"></i>
-                                            <p>Mesin</p>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="/bahan"
-                                            class="nav-link {{ Request::is('bahan*') ? 'active' : '' }}">
-                                            <i class="far fa-circle nav-icon"></i>
-                                            <p>Bahan</p>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="/barang"
-                                            class="nav-link {{ Request::is('barang*') ? 'active' : '' }}">
-                                            <i class="far fa-circle nav-icon"></i>
-                                            <p>Barang</p>
-                                        </a>
-                                    </li>
-                                    @if ($nama_level == 'Administrator' || $nama_level == 'Kasir')
-                                        <li class="nav-item">
-                                            <a href="/karyawan"
-                                                class="nav-link {{ Request::is('karyawan*') ? 'active' : '' }}">
-                                                <i class="far fa-circle nav-icon"></i>
-                                                <p>Data Karyawan</p>
-                                            </a>
-                                        </li>
-                                    @endif
-
-                                </ul>
-                            </li>
-                        @endif
-                        @if ($nama_level == 'Administrator' || $nama_level == 'Kasir')
-                            <li class="nav-header">USER</li>
-
-                            <li class="nav-item">
-                                <a href="/registrasi"
-                                    class="nav-link {{ Request::is('registrasi*') ? 'active' : '' }}"">
-                                    <i class="nav-icon fas fa-address-card"></i>
-                                    <p>
-                                        Registrasi User
-                                    </p>
-                                </a>
-                            </li>
-                        @endif
+                        <li class="nav-item">
+                            <a href="/logout" class="nav-link ">
+                                <i class="nav-icon fas fa-address-card"></i>
+                                <p>
+                                    Logout
+                                </p>
+                            </a>
+                        </li>
                     </ul>
                 </nav>
             </div>
@@ -274,13 +133,13 @@
         </div>
         <!-- /.content -->
 
-        <footer class="main-footer">
+        {{-- <footer class="main-footer">
             <div class="float-right d-none d-sm-block">
                 <b>Version</b> 3.2.0
             </div>
             <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights
             reserved.
-        </footer>
+        </footer> --}}
 
         <!-- Control Sidebar -->
         <aside class="control-sidebar control-sidebar-dark">

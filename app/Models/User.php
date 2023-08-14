@@ -15,7 +15,7 @@ class User extends Model implements Authenticatable, CanResetPassword
 {
     use HasFactory, HasApiTokens, Notifiable, CanResetPasswordTrait;
 
-    protected $table = 'users';
+    protected $table = 'users_wahni';
     protected $primaryKey = 'id_user';
     protected $guarded = [];
 
